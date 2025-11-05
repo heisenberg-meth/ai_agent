@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Request
 from twilio.twiml.voice_response import VoiceResponse
 from app.core.call_manager import process_call
+from fastapi.responses import Response
 
 router = APIRouter(prefix="/voice", tags=["voice"])
 
@@ -11,9 +12,11 @@ async def inbound_call(request: Request):
     audio_url = form.get("RecordingUrl")
 
     response_text = await process_call(audio_url)
+
     twiml = VoiceResponse()
     twiml.say(response_text)
-    return str(twiml)
+
+    return Response(content=str(twiml), media_type="application/xml")
 
 @router.post("/outbound")
 async def outbound_call():
