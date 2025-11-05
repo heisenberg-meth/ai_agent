@@ -3,7 +3,7 @@ from app.routes import voice
 
 app = FastAPI(title="AI Voice Agent")
 
-# Register routes
+# Register  routes
 app.include_router(voice.router)
 
 @app.get("/")
