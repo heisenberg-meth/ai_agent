@@ -3,6 +3,7 @@ from app.routes import voice, call_routes, stream_routes
 
 app = FastAPI(title="AI Voice Agent")
 
+# Register routes
 app.include_router(voice.router)
 app.include_router(call_routes.router)
 app.include_router(stream_routes.router)
