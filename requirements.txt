@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pydantic
+twilio
+whisper
+openai
+requests
+python-dotenv
+pydub
